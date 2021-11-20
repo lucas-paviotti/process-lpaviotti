@@ -58,8 +58,11 @@ app.use('/signup', signupRouter);
 app.use('/info', infoRouter);
 app.use('/randoms', randomsRouter);
 
-const server = https.createServer(httpsOptions, app).listen(PORT, () => {
+const server = https.createServer(httpsOptions, app).listen(process.argv[2] || PORT, () => {
     console.log(`Servidor http escuchando en el puerto ${server.address().port}`);
+    process.argv.forEach((val, index, array) => {
+        process.stdout.write(index + ': ' + val + '\n');
+    });
 });
 server.on("error", error => console.log(`Error en servidor ${error}`));
 

@@ -8,9 +8,9 @@ const { PORT, FBCLIENTID, FBCLIENTSECRET } = require('../config/config');
 const loginRouter = Router();
 
 passport.use(new FacebookStrategy({
-    clientID: FBCLIENTID,
-    clientSecret: FBCLIENTSECRET,
-    callbackURL: `https://localhost:${PORT}/login/facebook/callback`,
+    clientID: process.argv[3] || FBCLIENTID,
+    clientSecret: process.argv[4] || FBCLIENTSECRET,
+    callbackURL: `https://localhost:${process.argv[2] || PORT}/login/facebook/callback`,
     profileFields: ['id', 'displayName', 'email', 'picture.type(large)']
   },
   function(accessToken, refreshToken, profile, done) {
