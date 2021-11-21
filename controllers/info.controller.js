@@ -3,7 +3,7 @@ const infoListar = async (req, res) => {
         let info = [
             {
                 nombre: 'Argumentos de entrada',
-                detalle: 2
+                detalle: process.argv
             },
             {
                 nombre: 'Path de ejecución',

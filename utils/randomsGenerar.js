@@ -1,11 +1,11 @@
-const randoms = (max) => {
+const randoms = (a) => {
     let numList = {};
-    for (let i=0; i<=max || 100000000; i++){
+    let max = a || 100000000;
+    for (let i=0; i<=max; i++){
         num = Math.floor(Math.random() * (1000 - 1 + 1) + 1);
         numList[num] = (numList[num] + 1) || 1 ;
-        console.log(numList)
     }
     return numList;
 }
 
-process.send(randoms());
+process.send(randoms(process.argv[2]));
